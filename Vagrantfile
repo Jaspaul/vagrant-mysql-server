@@ -27,4 +27,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     shell.inline = "apt-get -q -y install puppet-common"
   end
 
+  config.vm.provision :puppet do |puppet|
+    puppet.manifests_path = 'puppet/manifests'
+    puppet.manifest_file = 'database.pp'
+    puppet.module_path = 'puppet/modules'
+  end
+
 end
