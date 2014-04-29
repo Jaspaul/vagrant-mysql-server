@@ -12,3 +12,4 @@ File {
   mode  => '0644'
 }
 
+include baseconfig, mysql
