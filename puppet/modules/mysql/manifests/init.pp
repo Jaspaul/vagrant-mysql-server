@@ -12,6 +12,13 @@ class mysql {
       require => Package['mysql-server'];
   }
 
+
+  file { '/etc/mysql/my.cnf':
+    source  => 'puppet:///modules/mysql/my.cnf',
+    require => Package['mysql-server'],
+    notify  => Service['mysql'];
+  }
+
   exec { 
     'set-mysql-password':
       unless  => 'mysqladmin -uroot -proot status',
